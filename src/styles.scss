@@ -1,1 +1,87 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+$primary-palette: (
+ 50: #e1f5fd,
+ 100: #b3e6f9,
+ 200: #82d5f6,
+ 300: #51c4f2,
+ 400: #2cb7f0,
+ 500: #02ABEE,
+ 600: #009ddf,
+ 700: #008acc,
+ 800: #0079b8,
+ 900: #005996,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+   )
+);
+$accent-palette: (
+ 50: #e1f1ea,
+ 100: #b6dcca,
+ 200: #87c6a9,
+ 300: #51b188,
+ 400: #15a270,
+ 500: #009358,
+ 600: #00854e,
+ 700: #007442,
+ 800: #006336,
+ 900: #004521,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+   )
+);
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$qrwaiter-frontend-primary: mat.define-palette(mat.$indigo-palette, 500);
+// $qrwaiter-frontend-primary: mat.define-palette(mat.$indigo-palette, 500);
+$qrwaiter-frontend-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$qrwaiter-frontend-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$qrwaiter-frontend-theme: mat.define-light-theme((
+  color: (
+    primary: $qrwaiter-frontend-primary,
+    accent: $qrwaiter-frontend-accent,
+    warn: $qrwaiter-frontend-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($qrwaiter-frontend-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html{ min-height: 100vh; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
