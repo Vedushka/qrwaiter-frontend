@@ -20,7 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { IdentityService, EmailAndPasswodr, Token } from '../identity.service';
+import { IdentityService, EmailAndPasswodr, Token } from '../../services/identity.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -66,7 +66,7 @@ export class RegistrationComponent {
   loading = false;
 
   routeToLogin() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['identity/login'])
   }
   onSubmit() {
     this.loading = true;
@@ -87,7 +87,7 @@ export class RegistrationComponent {
           },
           error: (e) =>{
             this.snackBar.open(`Ваш аккаунт создан но что-то пошло не так, попробуйте войти через страничку входа используя вашу почту ${request.email}`, "Войти").onAction().subscribe(()=>{
-              this.router.navigate(['/login'])
+              this.router.navigate(['identity/login'])
             })
           }
         })
