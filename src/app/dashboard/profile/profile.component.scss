@@ -1,0 +1,26 @@
+.form {
+    margin: auto;
+    min-width: 200px;
+    max-width: 700px;
+    width: 100%;
+  }
+  
+  .input {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  .select-dropdown{
+    width: 100%;
+  }
+  .middle {
+    text-align: center;
+  }
+  
+  .buttons {
+    display: flex;
+    column-gap: 15px;
+  
+    button {
+      min-width: 110px;
+    }
+  }

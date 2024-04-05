@@ -1,0 +1,33 @@
+<mat-toolbar>
+    <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon" (click)="toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="spacer"></span>
+    <!-- <button mat-icon-button class="icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button> -->
+    <button mat-icon-button class="icon" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  
+  <mat-drawer-container class="container" autosize>
+    <mat-drawer [opened]="dashboardSidebarOpened"  #drawer class="sidenav" mode="side">
+      <mat-list class="links">
+        <mat-list-item><a routerLink="/dashboard/profile">Детали компании</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item><a routerLink="/dashboard/">Item 2</a></mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Item 3</mat-list-item>
+      </mat-list>
+    </mat-drawer>
+  
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  
+  </mat-drawer-container>
+
+   

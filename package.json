@@ -30,6 +30,7 @@
     "@ngneat/transloco-persist-translations": "^5.0.0",
     "@ngneat/transloco-preload-langs": "^5.0.1",
     "express": "^4.18.2",
+    "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
