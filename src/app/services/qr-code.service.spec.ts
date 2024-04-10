@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LocalStorageService } from './local-storage.service';
+import { QrCodeService } from './qr-code.service';
 
-describe('LocalStorageService', () => {
-  let service: LocalStorageService;
+describe('QrCodeService', () => {
+  let service: QrCodeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LocalStorageService);
+    service = TestBed.inject(QrCodeService);
   });
 
   it('should be created', () => {

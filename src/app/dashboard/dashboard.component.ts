@@ -6,16 +6,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { LocalStorageService } from '../services/local-storage.service';
+import { LocalStorageService } from '../services/localStorage.service';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { IdentityService } from '../services/identity.service';
 import { RouterModule } from '@angular/router';
+import { DashboardContentComponent } from './dashboard-content/dashboard-content.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, CommonModule, MatListModule, MatDividerModule],
+  imports: [RouterModule, RouterOutlet, MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, CommonModule, MatListModule, MatDividerModule], 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

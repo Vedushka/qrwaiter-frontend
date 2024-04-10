@@ -1,0 +1,37 @@
+.form {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.invisible {
+    opacity: 0;
+}
+
+.qr {
+    display: flex;
+
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    .qrcode {
+        width: 260px; 
+    }
+}
+.qr-menu{
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+column-gap: 10px;
+}
+.link {
+    color: #111111;
+}
+
+.icon {
+    margin-left: 5px;
+
+    cursor: pointer;
+
+    fill: #111111;
+}

@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Редактировать столик</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onUpdate()">
+
+        <mat-form-field class="input">
+            <mat-label>Название столика</mat-label>
+            <input type="text" matInput formControlName="name" placeholder="">
+            @if (form.get('name')?.hasError('required')) {
+            <mat-error>Поле обязательно</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="input">
+            <mat-label>Номер столика</mat-label>
+            <input type="number" matInput formControlName="number" placeholder="">
+            @if (form.get('number')?.hasError('required')) {
+            <mat-error>Поле обязательно</mat-error>
+            }
+        </mat-form-field>
+    </form>
+    
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onDelete()">Удалить</button>
+    <button mat-button cdkFocusInitial mat-dialog-close>Отмена</button>
+    <button mat-button type="submit" (click)="onUpdate()">Обновить</button>
+</mat-dialog-actions>
+    <mat-progress-bar [class.invisible]="!loading" mode="indeterminate"></mat-progress-bar>

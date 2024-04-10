@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable, lastValueFrom, observable, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from './localStorage.service';
 import { jwtDecode } from "jwt-decode";
 import { Router } from '@angular/router';
 

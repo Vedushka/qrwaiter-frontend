@@ -12,16 +12,20 @@ export class RestaurantService {
   constructor(
     private http: HttpClient,
   ) { }
-  updateRestaurant(body: Restaurant): Observable<Restaurant> {
-    return this.http.post<Restaurant>(this.url, body, { headers: this.headers });
+  updateRestaurant(body: RestaurantDTO): Observable<RestaurantDTO> {
+    return this.http.post<RestaurantDTO>(this.url, body, { headers: this.headers });
   };
-  getRestaurant(): Observable<Restaurant> {
-    return this.http.get<Restaurant>(this.url, { headers: this.headers });
+  getRestaurant(): Observable<RestaurantDTO> {
+    return this.http.get<RestaurantDTO>(this.url, { headers: this.headers });
+  };
+  generateNewRestaurantLink(id: string): Observable<RestaurantDTO> {
+    return this.http.get<RestaurantDTO>(`${this.url}generateLink/${id}`, { headers: this.headers });
   };
 }
 
-export interface Restaurant {
+export interface RestaurantDTO {
   id: string;
+  waiterLink?: string;
   idUser: string;
   name: string;
   description: string;

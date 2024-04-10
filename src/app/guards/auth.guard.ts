@@ -11,10 +11,10 @@ export const canActivateDashboard: CanActivateFn = (
   if (identityService.isLogined()) {
     return true
   }
-  // return false;
-  else {
-    return createUrlTreeFromSnapshot(route.root, ['identity/login']); 
-  }
+  return false;
+  // else {
+  //   return createUrlTreeFromSnapshot(route.root, ['identity/login']); 
+  // }
 };
 
 export const canActivateIdentity: CanActivateFn = (

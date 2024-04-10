@@ -11,7 +11,7 @@
             </mat-form-field>
 
             <mat-form-field class="input">
-                <mat-label>Официальное название</mat-label>
+                <mat-label>Официальное название или ИНН</mat-label>
                 <input type="text" matInput formControlName="companyName" placeholder="">
                 @if (form.get('companyName')?.hasError('required')) {
                 <mat-error>Поле обязательно</mat-error>

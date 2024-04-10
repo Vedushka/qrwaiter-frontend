@@ -7,8 +7,16 @@ export const dashboadRoutes: Routes = [
         component: DashboardComponent,
         children:[
             {
+                path: "",
+                loadComponent: () => import("./dashboard-content/dashboard-content.component").then(mod => mod.DashboardContentComponent)
+            },
+            {
                 path: "profile",
                 loadComponent: () => import("./profile/profile.component").then(mod => mod.ProfileComponent)
+            },
+            {
+                path: "tables",
+                loadComponent: () => import("./tables/tables.component").then(mod => mod.TablesComponent)
             },
         ]
     },
