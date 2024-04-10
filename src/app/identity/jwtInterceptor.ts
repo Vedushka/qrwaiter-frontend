@@ -30,16 +30,16 @@ export const JwtInterceptorFn: HttpInterceptorFn =
     // }
     return next(req).pipe(
       catchError(errorData => {
-        if (errorData.status == 401) {
-          identityService.refreshToken().add(Observable.prototype.subscribe(value => { }))
-          let token = identityService.getToken();
-          req = req.clone({
-            setHeaders: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          return next(req) ;
-        }
+        console.dir(errorData);
+        // if (errorData.status == 0) {
+        //   identityService.refreshToken().add(Observable.prototype.subscribe(value => { }).unsubscribe())
+        //   let token = identityService.getToken();
+        //   req = req.clone({
+        //     setHeaders: {
+        //       Authorization: `Bearer ${token}`
+        //     }
+        //   });
+        // }
         return throwError(() => errorData);
       }));
   }

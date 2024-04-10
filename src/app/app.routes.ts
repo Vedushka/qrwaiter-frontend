@@ -16,5 +16,9 @@ export const routes: Routes = [
         path: "dashboard",
         loadChildren: () => import("./dashboard/dashboadr.routes").then(r => r.dashboadRoutes),
         canActivate: [canActivateDashboard],
+    },
+    {
+        path: "qr",
+        loadChildren: () => import("./qr/qr.routes").then(r => r.qrRoutes),
     }
 ];

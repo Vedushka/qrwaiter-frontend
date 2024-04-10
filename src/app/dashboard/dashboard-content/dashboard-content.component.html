@@ -1,0 +1,37 @@
+<section>
+
+    <h1>{{restaurant.name}}</h1>
+    <p>Официальноее название/ИНН: {{restaurant.companyName}}</p>
+    <p>Описание: {{restaurant.description}}</p>
+    <p>Адрес: {{restaurant.address.street}} {{restaurant.address.buildingNumber}}, {{restaurant.address.city}}, {{restaurant.address.zipCode}}</p>
+    <p>Временная зона: {{timeZone}}</p>
+
+
+    <h3>QR-код ресторана для официантов</h3>    
+    <section class="qr">
+        <qrcode [qrdata]="qrUrlWaiter" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
+    </section>
+    <a class="link" [href]="qrUrlWaiter">{{qrUrlWaiter}}</a>
+    <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlWaiter)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
+    <button mat-button (click)="onGenerate()">Новый QR-код</button>
+
+    
+</section>
+
+
+<!-- 
+id: string;
+waiterLink?: string;
+idUser: string;
+name: string;
+description: string;
+companyName: string;
+address: {
+    street: string;
+    buildingNumber: string;
+    zipCode: string;
+    city: string;
+};
+notifyMe: boolean;
+isDeleted: boolean;
+timeZoneMinutes: number; -->
