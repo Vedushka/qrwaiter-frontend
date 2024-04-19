@@ -1,0 +1,41 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  .container {
+    height: calc(100vh - 64px);
+}
+  
+
+.sidenav {
+  background: #e7e7e7;
+  min-width: 200px;
+  padding: 20px;
+}
+.links{
+  a{
+    color: var(--mdc-list-list-item-label-text-color);
+    text-decoration: none;
+  }
+}
+.sidenav-content {
+  padding: 20px;
+  display: flex;
+  
+
+  flex-direction: column;
+  row-gap: 10px;
+
+  section:last-of-type {
+      margin-top: auto;
+  }
+}
+  .mat-drawer-content {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: unset;
+}
+.home{
+  cursor: pointer ;
+}

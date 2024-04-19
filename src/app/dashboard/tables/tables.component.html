@@ -1,0 +1,15 @@
+<section class="menu">
+    <mat-card>
+        <mat-card-content>
+            <button mat-flat-button color="primary" (click)="openDialog()">Добавить столик</button>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<section class="tables">
+
+    @for (table of $tables; track table) {
+    <app-table [table]=table (changedTable)="changedTable($event)"></app-table>
+    }
+
+</section>

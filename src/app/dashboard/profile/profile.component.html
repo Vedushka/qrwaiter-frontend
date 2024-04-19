@@ -1,0 +1,77 @@
+<section>
+    <h2 class="middle">Детали компании</h2>
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <mat-form-field class="input">
+                <mat-label>Название заведения</mat-label>
+                <input type="text" matInput formControlName="name" placeholder="">
+                @if (form.get('name')?.hasError('required')) {
+                <mat-error>Поле обязательно</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="input">
+                <mat-label>Официальное название или ИНН</mat-label>
+                <input type="text" matInput formControlName="companyName" placeholder="">
+                @if (form.get('companyName')?.hasError('required')) {
+                <mat-error>Поле обязательно</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="input">
+                <mat-label>Описание</mat-label>
+                <input type="text" matInput formControlName="description" placeholder="">
+            </mat-form-field>
+
+
+
+            <mat-form-field class="input">
+                <mat-label>Город</mat-label>
+                <input type="text" matInput formControlName="city" placeholder="">
+                @if (form.get('city')?.hasError('required')) {
+                <mat-error>Поле обязательно</mat-error>
+                }
+            </mat-form-field>
+
+
+            
+            <mat-form-field class="input">
+                <mat-label>Почтовый индекс</mat-label>
+                <input type="text" matInput formControlName="zipCode" placeholder="">
+                @if (form.get('zipCode')?.hasError('required')) {
+                <mat-error>Поле обязательно</mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="input">
+                <mat-label>Название улицы</mat-label>
+                <input type="text" matInput formControlName="street" placeholder="">
+                @if (form.get('street')?.hasError('required')) {
+                <mat-error>Поле обязательно</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="input">
+                <mat-label>Номер дома</mat-label>
+                <input type="text" matInput formControlName="buildingNumber" placeholder="">
+                @if (form.get('buildingNumber')?.hasError('required')) {
+                <mat-error>Поле обязательно</mat-error>
+                }
+            </mat-form-field>
+
+            <mat-form-field class="select-dropdown">
+                <mat-label>Временная зона</mat-label>
+                <mat-select formControlName="timeZone" name="timeZone" >
+                    @for (timeZone of timeZones; track timeZone) {
+                    <mat-option [value]="timeZone.value">{{timeZone.description}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-checkbox class="" formControlName="notifyNe" >Уведомлять этот компьютер обо всех вызовах</mat-checkbox>
+
+            <section class="buttons">
+                <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
+                [disabled]="!form.valid || loading">Сохранить</button>
+            </section>
+    </form>
+</section>
