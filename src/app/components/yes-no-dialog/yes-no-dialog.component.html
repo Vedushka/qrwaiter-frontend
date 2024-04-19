@@ -1,0 +1,22 @@
+<section class="wrapper">
+
+  @if(data.header){
+  <h2 mat-dialog-title>{{data.header}}</h2>
+  }
+  @if(data.description){
+  <mat-dialog-content [innerHTML]="data.description" isHTML="true">
+    
+  </mat-dialog-content>
+  }
+  @if(this.data.keyString){
+  <mat-form-field class="input">
+    <mat-label>Введите: <b>{{data.keyString}}</b></mat-label>
+    <input matInput type="text" [(ngModel)]="keyField">
+  </mat-form-field>
+  }
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Нет</button>
+    <button mat-button disabled="{{data.keyString != undefined && data.keyString != keyField}}" mat-dialog-close="true"
+      cdkFocusInitial>Да</button>
+  </mat-dialog-actions>
+</section>

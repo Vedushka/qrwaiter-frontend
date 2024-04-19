@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Редактировать QR-код</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onUpdate()">
+        <mat-form-field class="input">
+            <mat-label>Текст QR-кода</mat-label>
+            <input type="text" matInput formControlName="title" placeholder="">
+        </mat-form-field>
+    </form>
+    <h3>QR-код для посетителей</h3>
+    <section class="qr">
+        <qrcode [qrdata]="qrUrlCall" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
+    </section>
+    <section class="qr-menu">
+        <a class="link" [href]="qrUrlCall">{{qrUrlCall}}</a>
+        <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlCall)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
+    </section>
+    <section class="qr-menu">
+        <button mat-button (click)="onGenerate(linkType.ClientLink)">Новый QR-код</button>
+    </section>
+
+    <h3>QR-код для официантов</h3>
+    <section class="qr">
+        <qrcode class="qr" [qrdata]="qrUrlSubscribe" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'">
+        </qrcode>
+    </section>
+    <section class="qr-menu">
+        <a class="link" [href]="qrUrlSubscribe">{{qrUrlSubscribe}}</a>
+        <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlSubscribe)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
+    </section>
+    <section class="qr-menu">
+        <button mat-button (click)="onGenerate(linkType.WaiterLink)">Новый QR-код</button>
+    </section>
+
+</mat-dialog-content>
+<mat-dialog-actions align="start">
+
+    <button mat-button cdkFocusInitial mat-dialog-close>Отмена</button>
+    <button mat-button type="submit" (click)="onUpdate()">Обновить</button>
+</mat-dialog-actions>
+<mat-progress-bar [class.invisible]="!loading" mode="indeterminate"></mat-progress-bar>
