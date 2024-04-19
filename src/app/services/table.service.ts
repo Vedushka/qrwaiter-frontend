@@ -8,26 +8,24 @@ import { LocalStorageService } from './localStorage.service';
   providedIn: 'root'
 })
 export class TableService {
-
-  headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8',);
   url = environment.apiUrl + "/api/table/";
   constructor(
     private http: HttpClient,
   ) { }
   updateTable(body: TableDTO): Observable<TableDTO> {
-    return this.http.post<TableDTO>(this.url, body, { headers: this.headers });
+    return this.http.post<TableDTO>(this.url, body);
   };
   deleteTable(id: string): Observable<TableDTO> {
-    return this.http.delete<TableDTO>(this.url + id, { headers: this.headers });
+    return this.http.delete<TableDTO>(this.url + id);
   };
   addTable(body: AddTableDTO): Observable<TableDTO> {
-    return this.http.put<TableDTO>(this.url, body, { headers: this.headers });
+    return this.http.put<TableDTO>(this.url, body);
   };
   getTable(): Observable<TableDTO> {
-    return this.http.get<TableDTO>(this.url, { headers: this.headers });
+    return this.http.get<TableDTO>(this.url);
   };
   getTablesByRestaurantId(id: string): Observable<Array<TableDTO>> {
-    return this.http.get<Array<TableDTO>>(`${this.url}restaurant/${id}`, { headers: this.headers });
+    return this.http.get<Array<TableDTO>>(`${this.url}restaurant/${id}`);
   };
 }
 

@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { YesNoDialogComponent, YesNoDialogContent } from '../../../../components/yes-no-dialog/yes-no-dialog.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class EditTableComponent {
     private tableService: TableService,
     private dialogRef: MatDialogRef<EditTableComponent>,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: TableDTO
   ) {
     this.form.get("name")?.setValue(this.data.name);
@@ -43,9 +45,11 @@ export class EditTableComponent {
   onUpdate() {
     this.loading = true;
     this.data.name = this.form.get("name")?.getRawValue(),
-      this.data.number = this.form.get("number")?.getRawValue(),
-      this.tableService.updateTable(this.data).subscribe(response => {
-          this.dialogRef.close("edited");
+    this.data.number = this.form.get("number")?.getRawValue(),
+    this.tableService.updateTable(this.data).subscribe(response => {
+      this.dialogRef.close("updated");
+      this.snackBar.open("Столик изменен", "", { duration: 2000 })
+      this.loading = false;
       });
   }
   onDelete() {
