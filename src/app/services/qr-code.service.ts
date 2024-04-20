@@ -7,25 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class QrCodeService {
-<<<<<<< Updated upstream
-    headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8',);
-=======
->>>>>>> Stashed changes
     url = environment.apiUrl + "/api/qrCode/";
     constructor(
       private http: HttpClient,
     ) { }
 
     updateQrCode(body: QrCodeDTO): Observable<QrCodeDTO> {
-<<<<<<< Updated upstream
-      return this.http.post<QrCodeDTO>(this.url, body, { headers: this.headers });
-    };
-    getQrCode(id: string): Observable<QrCodeDTO> {
-      return this.http.get<QrCodeDTO>(this.url + id, { headers: this.headers });
-    };
-    generateNewQrCodeLink(id: string, linkType: LinkType): Observable<QrCodeDTO> {
-      return this.http.get<QrCodeDTO>(`${this.url}generateLink/${id}/${linkType}`, { headers: this.headers });
-=======
       return this.http.post<QrCodeDTO>(this.url, body);
     };
     getQrCode(id: string): Observable<QrCodeDTO> {
@@ -33,7 +20,6 @@ export class QrCodeService {
     };
     generateNewQrCodeLink(id: string, linkType: LinkType): Observable<QrCodeDTO> {
       return this.http.get<QrCodeDTO>(`${this.url}generateLink/${id}/${linkType}`);
->>>>>>> Stashed changes
     };
   }
   export enum LinkType{
