@@ -7,19 +7,18 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class RestaurantService {
-  headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8',);
   url = environment.apiUrl + "/api/restaurant/";
   constructor(
     private http: HttpClient,
   ) { }
   updateRestaurant(body: RestaurantDTO): Observable<RestaurantDTO> {
-    return this.http.post<RestaurantDTO>(this.url, body, { headers: this.headers });
+    return this.http.post<RestaurantDTO>(this.url, body);
   };
   getRestaurant(): Observable<RestaurantDTO> {
-    return this.http.get<RestaurantDTO>(this.url, { headers: this.headers });
+    return this.http.get<RestaurantDTO>(this.url);
   };
   generateNewRestaurantLink(id: string): Observable<RestaurantDTO> {
-    return this.http.get<RestaurantDTO>(`${this.url}generateLink/${id}`, { headers: this.headers });
+    return this.http.get<RestaurantDTO>(`${this.url}generateLink/${id}`);
   };
 }
 
