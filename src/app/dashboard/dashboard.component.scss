@@ -5,7 +5,13 @@
     height: calc(100vh - 64px);
 }
   
-
+.sidenav-text{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 5px;
+}
 .sidenav {
   background: #e7e7e7;
   min-width: 200px;

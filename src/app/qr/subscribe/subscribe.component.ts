@@ -9,17 +9,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { map } from 'rxjs/internal/operators/map';
 import { tap } from 'rxjs/internal/operators/tap';
 import { LinkType, QrCodeAndTableDTO, QrCodeService } from '../../services/qr-code.service';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NotificationService } from '../../services/notification.service';
 import { LocalStorageService } from '../../services/localStorage.service';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-subscribe',
   standalone: true,
-  imports: [CommonModule, AngularFireModule, MatButtonModule, FormsModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, AngularFireModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule],
   templateUrl: './subscribe.component.html',
   styleUrl: './subscribe.component.scss'
 })
@@ -29,7 +30,9 @@ export class SubscribeComponent {
   message$: Observable<any>;
   fiirebaseActive = false;
   subscribed = false;
-  name = "";
+  form = new FormGroup({
+    name: new FormControl("", [Validators.required]),
+  });
   nameReadonly = false;
   link$: Observable<string>;
   constructor(readonly route: ActivatedRoute,
@@ -39,15 +42,8 @@ export class SubscribeComponent {
     readonly localStorageService: LocalStorageService
   ) {
     this.link$ = this.route.params.pipe<string>(map((p) => p['id']));
-    
-    // this.token$.subscribe(token =>{
-      // this.link$.subscribe(link => {
-      // // this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, "");
-      //   this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, token);
-      // })
-    // })
-    this.name = localStorageService.getItem("waiterName");
-    if (this.name) {
+    this.form.get('name')?.setValue(localStorageService.getItem("waiterName"));
+    if (localStorageService.getItem("waiterName")) {
       this.nameReadonly = true;
     }
     this.message$ = messaging.messages;
@@ -55,35 +51,38 @@ export class SubscribeComponent {
       trace('token'),
       tap(token => this.fiirebaseActive = !token)
     );
-    // this.message$ = this.messaging.messages;
-    // this.token$ = this.messaging.tokenChanges.pipe(
-    //   trace('token'),
-    //   tap(token => this.fiirebaseActive = !token),
-    //   map(token =>{
-    //     this.link$.subscribe(link => {
-          // this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, "");
-            // this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, token);
-          // })
-      // })
-    // );
+    this.link$.subscribe(link => {
+      this.token$.subscribe(token => {
+        if (!token) {
+          token = "";
+        }
+        this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, token);
+      })
+    })
   }
-  request() {
+  subscribeToTable() {
     this.nameReadonly = true;
-    this.localStorageService.setItem("waiterName", this.name);
+    this.localStorageService.setItem("waiterName", this.form.get('name')?.getRawValue());
+    this.token$.subscribe(token => {
+      this.link$.subscribe(link => {
+        this.notificationService.addDeviceToQrCode({ deviceToken: String(token), link: link, name: this.form.get('name')?.getRawValue() }, false).subscribe(() => {
+          this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, token);
+        })
+      })
+    })
+  }
+  unsubscribeFromTable() {
+    this.token$.subscribe(token => {
+      this.link$.subscribe(link => {
+        this.notificationService.unsubscribeDeviceFromQrCode(token, link).subscribe(() => {
+          this.qrCodeAndTableDto$ = this.qrCodeService.getQrCodeAndTableDto(link, LinkType.WaiterLink, token);
+        })
+      })
+    })
+  }
+  requestToken() {
     if (this.fiirebaseActive) {
-      
-      this.messaging.requestPermission.subscribe(console.log, console.error);
-      // this.token$ = this.messaging.tokenChanges.pipe(
-      //   trace('token'),
-      //   tap(token => this.fiirebaseActive = !!token)
-      // );
-      // this.token$.subscribe(token => {
-      //   this.link$.subscribe(link => {
-      //     this.notificationService.addDeviceToQrCode({ deviceToken: String(token), link: link, name: this.name }, false).subscribe(response => {
-      //       console.dir(response);
-      //     })
-      //   })
-      // })
+      this.messaging.requestPermission.subscribe();
     }
   }
 }

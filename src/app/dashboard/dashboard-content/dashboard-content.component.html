@@ -7,7 +7,7 @@
     <p>Временная зона: {{timeZone}}</p>
 
 
-    <h3>QR-код ресторана для официантов</h3>    
+    <h3>QR-код ресторана для официантов</h3>
     <section class="qr">
         <qrcode [qrdata]="qrUrlWaiter" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
     </section>
@@ -15,23 +15,6 @@
     <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlWaiter)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
     <button mat-button (click)="onGenerate()">Новый QR-код</button>
 
-    
+    <button mat-button routerLink="/dashboard/profile"><mat-icon>edit</mat-icon>Изменить детали компании</button>
+
 </section>
-
-
-<!-- 
-id: string;
-waiterLink?: string;
-idUser: string;
-name: string;
-description: string;
-companyName: string;
-address: {
-    street: string;
-    buildingNumber: string;
-    zipCode: string;
-    city: string;
-};
-notifyMe: boolean;
-isDeleted: boolean;
-timeZoneMinutes: number; -->

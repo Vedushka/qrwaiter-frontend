@@ -1,20 +1,13 @@
-importScripts('https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js');
-importScripts('https://www.gstatic.com/firebasejs/10.10.0/firebase-messaging.js');
-
-// Get registration token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-const messaging = getMessaging();
-getToken(messaging, { vapidKey: 'bfwOXoD_fB0Kda73BzMwXzuoC26Zcjj5lxs2JrnvH3Y' }).then((currentToken) => {
-  console.dir(currentToken)
-  if (currentToken) {
-    // Send the token to your server and update the UI if necessary
-    // ...
-  } else {
-    // Show permission request UI
-    console.log('No registration token available. Request permission to generate one.');
-    // ...
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-  // ...
-});
+importScripts('https://www.gstatic.com/firebasejs/10.1.0/firebase-app-compat.js')
+importScripts('https://www.gstatic.com/firebasejs/10.1.0/firebase-messaging-compat.js')
+const config = {
+  apiKey: "AIzaSyBzzwLr1eVLzctDMyfjXtgZCZ5lWG3Cb8w",
+  authDomain: "qr-waiter-123.firebaseapp.com",
+  projectId: "qr-waiter-123",
+  storageBucket: "qr-waiter-123.appspot.com",
+  messagingSenderId: "851267426934",
+  appId: "1:851267426934:web:39122247bbf60ca89b1d57",
+  measurementId: "G-NFWL27E7KT",
+};
+firebase.initializeApp(config);
+firebase.messaging();

@@ -1,8 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from './localStorage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +26,10 @@ export class TableService {
   getTablesByRestaurantId(id: string): Observable<Array<TableDTO>> {
     return this.http.get<Array<TableDTO>>(`${this.url}restaurant/${id}`);
   };
+
+  getTablesWitWaitersByRestaurantLink(link: string): Observable<Array<TableWithWaitersDTO>> {
+    return this.http.get<Array<TableWithWaitersDTO>>(`${this.url}waiter/${link}`);
+  };
 }
 
 
@@ -42,4 +45,15 @@ export interface TableDTO {
   name: string;
   number: number;
   isDeleted: boolean;
+}
+export interface TableWithWaitersDTO{
+  id: string;
+  waiterLink: string;
+  name: string;
+  number: number;
+  waiters: Array<WaiterDTO>;
+}
+export interface WaiterDTO{
+  name: string;
+  deviceToken: string;
 }

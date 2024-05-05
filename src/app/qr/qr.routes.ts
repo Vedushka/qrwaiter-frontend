@@ -14,6 +14,10 @@ export const qrRoutes: Routes = [
                 path: "call/:id",
                 loadComponent: () => import("./call/call.component").then(mod => mod.CallComponent)
             },
+          {
+            path: "waiter/:restaurantLink",
+            loadComponent: () => import("./waiter-page/waiter-page.component").then(mod => mod.WaiterPageComponent)
+          },
         ]
     },
 ];

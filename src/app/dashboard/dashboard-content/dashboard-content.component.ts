@@ -2,21 +2,19 @@ import { Component } from '@angular/core';
 import { RestaurantDTO, RestaurantService } from '../../services/restaurant.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TimeZones } from '../profile/profile.component';
-import { timeStamp } from 'console';
-import { QrCodeService } from '../../services/qr-code.service';
 import { QRCodeModule } from 'angularx-qrcode';
 import { environment } from '../../../environments/environment';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSelectModule } from '@angular/material/select';
 import { YesNoDialogComponent, YesNoDialogContent } from '../../components/yes-no-dialog/yes-no-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-content',
   standalone: true,
-  imports: [QRCodeModule, MatIconModule, MatButtonModule],
+  imports: [QRCodeModule, MatIconModule, MatButtonModule, RouterModule, RouterOutlet],
   templateUrl: './dashboard-content.component.html',
   styleUrl: './dashboard-content.component.scss'
 })
@@ -41,8 +39,8 @@ export class DashboardContentComponent {
     });
 
   }
-  qrUrlWaiter = environment.baseUrl+"/waiter/";
-  
+  qrUrlWaiter = environment.baseUrl+"/qr/waiter/";
+
   copyLink(link: string){
     this.clipboard.copy(link);
     this.snackBar.open("Ссылка скопирована", "", { duration: 2000 })
@@ -53,12 +51,12 @@ export class DashboardContentComponent {
     yesNoDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.restaurantService.generateNewRestaurantLink(this.restaurant.id).subscribe(response => {
-          
+
           this.restaurant = response;
           this.snackBar.open("Новый QR-код сгенерирован", "", { duration: 2000 })
-          this.qrUrlWaiter = environment.baseUrl+"/waiter/"+this.restaurant.waiterLink;
+          this.qrUrlWaiter = environment.baseUrl+"/qr/waiter/"+this.restaurant.waiterLink;
         },
-        error=>{
+            error=>{
           this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 })
         });
       }

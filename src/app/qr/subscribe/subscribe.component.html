@@ -1,42 +1,34 @@
-<h1>Подписаться на {{(qrCodeAndTableDto$| async)?.tableName}} {{(qrCodeAndTableDto$| async)?.tableNumber}}</h1>
-<p>
-    {{link$ | async}}
-</p>
-<pre>{{qrCodeAndTableDto$| async | json}}</pre>
-<p>
-    Token
-    {{ token$ | async | json}}
-</p>
-<p>
-    Msg
-    {{ message$ | async | json }}
-</p>
-<!-- @if(token$ | async){ -->
-    <h1>Включите уведомления</h1>
+@if(this.form.get('name')?.getRawValue()){
+    <h3>Добро пожаловать {{this.form.get('name')?.getRawValue()}}</h3>
+
+}
+@if(!(token$ | async)){
+    <h4>Включите уведомления</h4>
     <p>Для работы приложения необходимо влючить уведомления</p>
-<!-- } -->
-<!-- @else { -->
-    
-    <!-- {{(qrCodeAndTableDto$| async)?.subscribed}}
-    @if((qrCodeAndTableDto$| async)?.subscribed){ -->
-        <h1>Вы подписаны на {{(qrCodeAndTableDto$| async)?.tableName}} {{(qrCodeAndTableDto$| async)?.tableNumber}}</h1>
-    <!-- }
-    @else { -->
-        <h1>Подписаться на {{(qrCodeAndTableDto$| async)?.tableName}} {{(qrCodeAndTableDto$| async)?.tableNumber}}</h1>
-        <!-- @if(){ -->
-            <!-- <form class="example-form" >
+    <button mat-flat-button color="accent" (click)="requestToken()"><mat-icon>notifications</mat-icon>Включить уведомления на этом устройстве</button>
+
+}
+@else {
+
+    @if((qrCodeAndTableDto$ | async)?.subscribed){
+        <h4>Вы подписаны на {{(qrCodeAndTableDto$| async)?.tableName}} {{(qrCodeAndTableDto$| async)?.tableNumber}}</h4>
+        <button mat-flat-button color="warn" (click)="unsubscribeFromTable()"><mat-icon>notifications_off</mat-icon>Отписаться от {{(qrCodeAndTableDto$| async)?.tableName}}
+            {{(qrCodeAndTableDto$| async)?.tableNumber}}</button>
+    }
+    @else {
+        <h4>Подписаться на {{(qrCodeAndTableDto$| async)?.tableName}} {{(qrCodeAndTableDto$| async)?.tableNumber}}</h4>
+        @if(!this.form.get('name')?.getRawValue()){
+
+            <form class="example-form" [formGroup]="form">
                 <mat-form-field class="example-full-width">
-                    <mat-label >Имя официанта или название устройства</mat-label>
-                    <input formControlName="name" matInput placeholder="Петр Иванов/Терминал" required>
+                    <mat-label>Имя официанта или название устройства</mat-label>
+                    <input [disabled]="nameReadonly" formControlName="name" matInput placeholder="Петр Иванов/Терминал" required>
                 </mat-form-field>
-            </form> -->
-    <!-- } -->
-<!-- } -->
-<!-- @if(token$ | async){ -->
-    <button mat-flat-button color="primary" (click)="request()">Подписаться на {{(qrCodeAndTableDto$| async)?.tableName}} {{(qrCodeAndTableDto$| async)?.tableNumber}}</button>
-<!-- } -->
-<!-- @else { -->
-    <!-- @if(!(qrCodeAndTableDto$| async)?.subscribed){ -->
-    <button mat-flat-button color="primary" (click)="request()">Включить уведомления на этом устройстве</button>
-    <!-- } -->
-<!-- } -->
+            </form>
+        }
+            <button mat-flat-button color="primary" (click)="subscribeToTable()"><mat-icon>notification_add</mat-icon>Подписаться на {{(qrCodeAndTableDto$| async)?.tableName}}
+                {{(qrCodeAndTableDto$| async)?.tableNumber}}</button>
+
+    }
+}
+
