@@ -1,0 +1,28 @@
+.tables{
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 20px;
+  row-gap: 20px;
+  align-items: stretch;
+  .table{
+  height: 100%;
+  }
+  flex-grow: 1;
+}
+.form{
+  margin-bottom: 15px;
+}
+@media  screen and (max-width: 959.98px) {
+  .tables {
+  flex-direction: column;
+
+  }
+  .full-width{
+    width: 100%;
+  }
+}
+.full-width{
+  min-width: 400px;
+}

@@ -1,0 +1,24 @@
+:host{
+  height: 100%;
+  display: contents;
+}
+@media  screen and (max-width: 959.98px) {
+  :host {
+  width: 100%;
+  }
+}
+.flex-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 260px;
+  min-height: 165px;
+  height: 100%;
+}
+.button{
+  width: 100%;
+}
+.li-me{
+  font-weight: 500;
+  color: #132b58;
+}

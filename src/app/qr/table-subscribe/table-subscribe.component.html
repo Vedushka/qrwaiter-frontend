@@ -1,0 +1,45 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title class="title">{{ table.name }} {{ table.number }}</mat-card-title>
+
+  </mat-card-header>
+  <mat-card-content class="flex-wrapper">
+    <section>
+      @if (table.waiters.length > 0) {
+
+        <p>{{ table.name }} обслуживается:</p>
+        @for (waiter of table.waiters; track waiter) {
+          <ul>
+
+            @if (waiter.deviceToken == deviceToken) {
+              <li class="li-me">{{ waiter.name }} (Вы)</li>
+            } @else {
+              <li>{{ waiter.name }}</li>
+            }
+          </ul>
+        }
+      }
+    </section>
+
+    <section>
+
+      @if (deviceToken) {
+
+        @if (subscribed) {
+          <button mat-flat-button color="warn" class="button" (click)="unsubscribeFromTable()">
+            <mat-icon>notifications_off</mat-icon>
+            Отписаться
+          </button>
+        } @else {
+          <button mat-flat-button color="primary" class="button" (click)="subscribeToTable()">
+            <mat-icon>notification_add</mat-icon>
+            Подписаться
+          </button>
+        }
+      }
+    </section>
+
+  </mat-card-content>
+
+
+</mat-card>

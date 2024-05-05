@@ -1,0 +1,38 @@
+@if (this.form.get('name')?.getRawValue() && token) {
+  <h3>Добро пожаловать {{ this.form.get('name')?.getRawValue() }}</h3>
+
+  <button  mat-flat-button color="warn"  (click)="allNotificationsOff()">
+    <mat-icon>notifications_off</mat-icon>
+    Выключить все уведомления на этом устройстве
+  </button>
+}
+@if (!token) {
+  <h4>Включите уведомления</h4>
+  <p>Для работы приложения необходимо влючить уведомления</p>
+
+
+    <form class="form" [formGroup]="form" (ngSubmit)="requestToken()">
+      <mat-form-field class="full-width input">
+        <mat-label>Имя официанта или название устройства</mat-label>
+        <input formControlName="name" matInput placeholder="Петр Иванов/Терминал" required>
+
+      </mat-form-field>
+    </form>
+      <button [disabled]="form.get('name')?.hasError('required')" mat-flat-button color="accent" type="submit" (click)="requestToken()">
+        <mat-icon>notifications</mat-icon>
+        Включить уведомления на этом устройстве
+      </button>
+
+
+}
+
+
+@if (tables) {
+  <section class="tables">
+    @for (table of tables; track table) {
+      <app-table-subscribe class="table" [table]=table [deviceToken]="token"
+                           [waiterName]="this.form.get('name')?.getRawValue()"
+                           (changedTable)="changedTable($event)"></app-table-subscribe>
+    }
+  </section>
+}
