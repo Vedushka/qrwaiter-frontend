@@ -18,6 +18,10 @@ export const dashboadRoutes: Routes = [
                 path: "tables",
                 loadComponent: () => import("./tables/tables.component").then(mod => mod.TablesComponent)
             },
+          {
+            path: "qr-print",
+            loadComponent: () => import("./qr-print/qr-print.component").then(mod => mod.QrPrintComponent),
+          },
         ]
     },
 ];

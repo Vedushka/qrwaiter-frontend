@@ -4,7 +4,7 @@
     <form class="form" [formGroup]="form" (ngSubmit)="onUpdate()">
         <mat-form-field class="input">
             <mat-label>Текст QR-кода</mat-label>
-            <input type="text" matInput formControlName="title" placeholder="">
+            <textarea  type="text" matInput formControlName="title" placeholder=""></textarea>
         </mat-form-field>
     </form>
     <h3>QR-код для посетителей</h3>
@@ -16,7 +16,8 @@
         <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlCall)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
     </section>
     <section class="qr-menu">
-        <button mat-button (click)="onGenerate(linkType.ClientLink)">Новый QR-код</button>
+      <button mat-button (click)="onGenerate(linkType.ClientLink)">Новый QR-код</button>
+      <button mat-button mat-dialog-close (click)="printQrClien()">Печать</button>
     </section>
 
     <h3>QR-код для официантов</h3>
@@ -30,6 +31,7 @@
     </section>
     <section class="qr-menu">
         <button mat-button (click)="onGenerate(linkType.WaiterLink)">Новый QR-код</button>
+      <button mat-button  mat-dialog-close (click)="printQrWaiter()">Печать</button>
     </section>
 
 </mat-dialog-content>

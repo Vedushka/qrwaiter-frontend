@@ -1,7 +1,9 @@
 <section class="menu">
     <mat-card>
-        <mat-card-content>
-            <button mat-flat-button color="primary"  (click)="openDialog()">Добавить столик</button>
+        <mat-card-content class="buttons">
+          <button mat-flat-button color="primary"  (click)="openDialog()"><mat-icon>add</mat-icon>Добавить столик</button>
+          <button mat-stroked-button color="primary"  (click)="printQrsClients()"><mat-icon>print</mat-icon>Напечатать QR-коды для клиентов</button>
+          <button mat-stroked-button color="primary"  (click)="printQrsWaiters()"><mat-icon>print</mat-icon>Напечатать QR-коды для официантов</button>
         </mat-card-content>
     </mat-card>
 </section>

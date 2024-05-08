@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { YesNoDialogComponent, YesNoDialogContent } from '../../components/yes-no-dialog/yes-no-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import {Router, RouterModule, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-content',
@@ -26,6 +26,7 @@ export class DashboardContentComponent {
     private snackBar: MatSnackBar,
     private clipboard: Clipboard,
     public dialog: MatDialog,
+    public router: Router
 
 
 
@@ -40,7 +41,9 @@ export class DashboardContentComponent {
 
   }
   qrUrlWaiter = environment.baseUrl+"/qr/waiter/";
-
+  printQrWaiters(){
+    this.router.navigate(["/dashboard/qr-print"], {queryParams: {link: this.qrUrlWaiter, title: "QR-код для официантов"}})
+  }
   copyLink(link: string){
     this.clipboard.copy(link);
     this.snackBar.open("Ссылка скопирована", "", { duration: 2000 })

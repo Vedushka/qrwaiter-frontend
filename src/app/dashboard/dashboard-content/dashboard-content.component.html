@@ -1,20 +1,34 @@
 <section>
 
-    <h1>{{restaurant.name}}</h1>
-    <p>Официальноее название/ИНН: {{restaurant.companyName}}</p>
-    <p>Описание: {{restaurant.description}}</p>
-    <p>Адрес: {{restaurant.address.street}} {{restaurant.address.buildingNumber}}, {{restaurant.address.city}}, {{restaurant.address.zipCode}}</p>
-    <p>Временная зона: {{timeZone}}</p>
+  <h1>{{ restaurant.name }}</h1>
+  <p>Официальноее название/ИНН: {{ restaurant.companyName }}</p>
+  <p>Описание: {{ restaurant.description }}</p>
+  <p>Адрес: {{ restaurant.address.street }} {{ restaurant.address.buildingNumber }}, {{ restaurant.address.city }}
+    , {{ restaurant.address.zipCode }}</p>
+  <p>Временная зона: {{ timeZone }}</p>
 
 
-    <h3>QR-код ресторана для официантов</h3>
-    <section class="qr">
-        <qrcode [qrdata]="qrUrlWaiter" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
-    </section>
-    <a class="link" [href]="qrUrlWaiter">{{qrUrlWaiter}}</a>
-    <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlWaiter)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
-    <button mat-button (click)="onGenerate()">Новый QR-код</button>
+  <h3>QR-код ресторана для официантов</h3>
+  <section class="qr">
+    <qrcode [qrdata]="qrUrlWaiter" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
+  </section>
+  <a class="link" [href]="qrUrlWaiter">{{ qrUrlWaiter }}</a>
+  <section class="buttons">
 
-    <button mat-button routerLink="/dashboard/profile"><mat-icon>edit</mat-icon>Изменить детали компании</button>
+    <button mat-stroked-button (click)="copyLink(qrUrlWaiter)">
+      <mat-icon aria-label="Копировать" fontIcon="content_copy"></mat-icon>
+      Скопировать ссылку
+    </button>
+    <button mat-stroked-button (click)="onGenerate()">Новый QR-код</button>
+    <button mat-stroked-button (click)="printQrWaiters()">
+      <mat-icon>print</mat-icon>
+      Напечатать QR-код
+    </button>
+  </section>
+
+  <button mat-stroked-button routerLink="/dashboard/profile">
+    <mat-icon>edit</mat-icon>
+    Изменить детали компании
+  </button>
 
 </section>

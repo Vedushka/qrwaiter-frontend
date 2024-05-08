@@ -8,3 +8,14 @@
 .menu{
     padding-bottom: 15px;
 }
+.buttons{
+  button{
+    margin: 5px;
+  }
+}
+@media  screen and (max-width: 959.98px) {
+  .tables {
+    flex-direction: column;
+    width: 100%;
+  }
+}

@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     .qrcode {
-        width: 260px; 
+        width: 260px;
     }
 }
 .qr-menu{
@@ -26,6 +26,8 @@ column-gap: 10px;
 }
 .link {
     color: #111111;
+  word-break: break-word;
+
 }
 
 .icon {

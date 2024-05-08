@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LocalStorageService } from './localStorage.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../environments/environment';
+import {WaiterDTO} from "./table.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,12 @@ export class NotificationService {
   ) {
   }
   api = "/api/Notification/";
-
+  getDevice(token : string): Observable<WaiterDTO> {
+    return this.http.get<WaiterDTO>(environment.apiUrl + this.api + "waiter/" + token);
+  };
+  addDevice(body: WaiterDTO): Observable<any> {
+    return this.http.post<WaiterDTO>(environment.apiUrl + this.api + "waiter", body);
+  };
   addDeviceToQrCode(body: DeviceAndQrCodeDTO, onlyThisDevice: boolean = false): Observable<any> {
     let params = new HttpParams().set("onlyThisDevice", onlyThisDevice);
     return this.http.post<DeviceAndQrCodeDTO>(environment.apiUrl + this.api + "addDeviceToQrCode", body, {params: params});
@@ -27,7 +33,7 @@ export class NotificationService {
   unsubscribeDeviceFromQrCode(deviceToken : string, waiterLink : string): Observable<any> {
     return this.http.get<any>(environment.apiUrl + this.api + `unsubscribeDeviceFromQrCode/${deviceToken}/${waiterLink}` );
   };
-  
+
   callWaiter(link : string): Observable<any> {
     return this.http.get<any>(environment.apiUrl + this.api + `callWaiter/${link}` );
   };

@@ -25,10 +25,17 @@ export class QrCodeService {
     let params = new HttpParams().set("deviceToken", deviceToken);
     return this.http.get<QrCodeAndTableDTO>(`${this.url}QrCodeAndTableDto/${link}/${type}`, {params: params});
   };
+  getQrCodesForPrint(type: 'ClientLink'|'WaiterLink'): Observable<Array<PrintQrCodeDTO>> {
+    return this.http.get<Array<PrintQrCodeDTO>>(`${this.url}printQrCodes/${type}`);
+  };
 }
 export enum LinkType {
   ClientLink,
   WaiterLink
+}
+export interface PrintQrCodeDTO{
+  link: string,
+  title: string
 }
 export interface QrCodeDTO {
   id: string;

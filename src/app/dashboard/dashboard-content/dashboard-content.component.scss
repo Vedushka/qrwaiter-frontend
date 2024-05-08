@@ -1,7 +1,12 @@
 .link {
     color: #111111;
+    word-break: break-word;
 }
-
+.buttons{
+  button{
+    margin: 5px;
+  }
+}
 .icon {
     margin-left: 10px;
 

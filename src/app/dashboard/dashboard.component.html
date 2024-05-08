@@ -1,32 +1,81 @@
-<mat-toolbar>
-    <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon" (click)="toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span class="home" routerLink="/dashboard">QR-Waiter</span>
-    <span class="spacer"></span>
+<mat-toolbar class="no-print">
+  <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon" (click)="toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="home" routerLink="/dashboard">QR-Waiter</span>
+  <span class="spacer"></span>
 
-    <button mat-icon-button class="icon" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </mat-toolbar>
+  <button mat-icon-button class="icon" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
 
 
-  <mat-drawer-container class="container" autosize>
-    <mat-drawer [opened]="dashboardSidebarOpened"  #drawer class="sidenav" mode="side">
-      <mat-list class="links">
-        <mat-list-item><a routerLink="/dashboard" class="sidenav-text"><mat-icon>store</mat-icon>О компании</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item><a routerLink="/dashboard/tables" class="sidenav-text"><mat-icon>table_restaurant</mat-icon>Столики</a></mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Item 3</mat-list-item>
-      </mat-list>
-    </mat-drawer>
+<mat-drawer-container class="container" autosize>
+  <mat-drawer [opened]="dashboardSidebarOpened" #drawer class="sidenav" [mode]="sideNavMode">
+    <section class="sidenav-content-wrapper">
 
-    <div class="sidenav-content">
+    <mat-list class="links">
+      <mat-list-item><a routerLink="/dashboard" class="sidenav-text">
+        <mat-icon>store</mat-icon>
+        О компании</a></mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item><a routerLink="/dashboard/tables" class="sidenav-text">
+        <mat-icon>table_restaurant</mat-icon>
+        Столики</a></mat-list-item>
+      <mat-divider></mat-divider>
 
-      <router-outlet></router-outlet>
-    </div>
+    </mat-list>
+    @if (qrPrintPage) {
+      <section class="qr-print-page">
+        <section class="section">
+          <mat-form-field class=""  (change)="qrChangeValue($event)">
+            <section>
+              <mat-label>Размер QR</mat-label>
+              <input matInput type="number" [(ngModel)]="qrSize" >
+            </section>
+            <mat-slider class="" [max]="400" [min]="50" [step]="1">
+              <input matSliderThumb [(ngModel)]="qrSize">
+            </mat-slider>
+          </mat-form-field>
+        </section>
 
-  </mat-drawer-container>
+          <section class="section">
+            <mat-form-field class=""  (change)="qrChangeValue($event)">
+              <section>
+                <mat-label>Размер текста</mat-label>
+                <input matInput type="number" [(ngModel)]="qrFontSize">
+              </section>
+              <mat-slider class="" [max]="72" [min]="4" [step]="1">
+                <input matSliderThumb [(ngModel)]="qrFontSize">
+              </mat-slider>
+            </mat-form-field>
+          </section>
+
+        <section class="section">
+          <mat-form-field class=""  (change)="qrChangeValue($event)">
+            <section>
+              <mat-label>Закругление углов</mat-label>
+              <input matInput type="number" [(ngModel)]="qrBorderRadius" >
+            </section>
+            <mat-slider class="" [max]="8" [min]="0" [step]="1">
+              <input matSliderThumb [(ngModel)]="qrBorderRadius">
+            </mat-slider>
+          </mat-form-field>
+        </section>
+
+
+          <button mat-flat-button color="primary" (click)="print()"><mat-icon>print</mat-icon>Печать</button>
+      </section>
+    }
+    </section>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
 
 

@@ -1,6 +1,13 @@
-.title{
-    margin-bottom: 10px;
+.title {
+  margin-bottom: 10px;
 }
-.subtitle{
-    margin-bottom: 10px;
+
+.subtitle {
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 959.98px) {
+  :host {
+    width: 100%;
+  }
 }
