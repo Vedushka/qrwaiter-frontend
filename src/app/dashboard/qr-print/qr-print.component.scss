@@ -1,0 +1,32 @@
+:host {
+  --qr-size: 175mm;
+  --font-size: 16pt;
+  --qr-border-radius: 3mm;
+
+  .qr-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 2mm;
+    border-radius: var(--qr-border-radius);
+    border: 1px dashed gray;
+    break-inside: avoid;
+    height: fit-content;
+  }
+
+  .qrs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5mm;
+    row-gap: 5mm;
+  }
+
+  .title {
+    font-size: var(--font-size);
+    margin-bottom: 3mm;
+    white-space: pre;
+    text-align: center;
+  }
+
+}

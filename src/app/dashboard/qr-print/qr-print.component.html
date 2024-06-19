@@ -1,0 +1,10 @@
+
+<section class="qrs-wrapper">
+  @for (qr of qrCodes; track qr) {
+    <section class="qr-wrapper">
+      <qrcode class="qr" [margin]="2" [qrdata]="qr.link" [width]="qrSize" [errorCorrectionLevel]="'H'" [elementType]="'svg'">
+      </qrcode>
+      <span class="title">{{ qr.title }}</span>
+    </section>
+  }
+</section>
