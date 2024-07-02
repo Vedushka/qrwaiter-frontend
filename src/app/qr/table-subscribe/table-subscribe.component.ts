@@ -47,7 +47,7 @@ export class TableSubscribeComponent implements OnChanges {
     }, false).subscribe(response => {
       this.table.waiters.push(({deviceToken: response.deviceToken, name: response.name}))
       this.subscribed = this.table.waiters.some(w => w.deviceToken == this.deviceToken);
-      this.snackBar.open(`Вы подписались на ${this.table.name} ${this.table.number}`,undefined,{duration:2000});
+      this.snackBar.open(`You subscribed to ${this.table.name} ${this.table.number}`,undefined,{duration:2000});
       this.changedTable.emit(this.table);
     });
   }
@@ -57,7 +57,7 @@ export class TableSubscribeComponent implements OnChanges {
       const index = this.table.waiters.findIndex(w => w.deviceToken == this.deviceToken);
       this.table.waiters.splice(index, 1);
       this.subscribed = this.table.waiters.some(w => w.deviceToken == this.deviceToken);
-      this.snackBar.open(`Вы отписались от ${this.table.name} ${this.table.number}`,undefined,{duration:2000});
+      this.snackBar.open(`You unsubscribed from ${this.table.name} ${this.table.number}`,undefined,{duration:2000});
       this.changedTable.emit(this.table);
     });
   }

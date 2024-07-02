@@ -39,7 +39,7 @@ export class EditTableComponent {
   @Output() changedTable = new EventEmitter<TableDTO>();
 
   form = new FormGroup({
-    name: new FormControl('Столик', [Validators.required]),
+    name: new FormControl('Table', [Validators.required]),
     number: new FormControl<number>(0, [Validators.required]),
   });
   onUpdate() {
@@ -48,13 +48,13 @@ export class EditTableComponent {
     this.data.number = this.form.get("number")?.getRawValue(),
     this.tableService.updateTable(this.data).subscribe(response => {
       this.dialogRef.close("updated");
-      this.snackBar.open("Столик изменен", "", { duration: 2000 })
+      this.snackBar.open("Table changed", "", { duration: 2000 })
       this.loading = false;
       });
   }
   onDelete() {
 
-      let yesNoContent: YesNoDialogContent = { header: `Удалить`, description: `Вы хотите удалить ${this.data.name} под номером ${this.data.number}? Для того что-бы удалить столк введите:</br><b>${this.data.name} ${this.data.number}</b>`, keyString : `${this.data.name} ${this.data.number}`}
+      let yesNoContent: YesNoDialogContent = { header: `Delete`, description: `Do you want delete ${this.data.name} at number ${this.data.number}? To delete a table, enter:</br><b>${this.data.name} ${this.data.number}</b>`, keyString : `${this.data.name} ${this.data.number}`}
       let yesNoDialogRef = this.dialog.open(YesNoDialogComponent, { data: yesNoContent, id: "yesNoDeleteTabledDialog", ariaModal: true, width: "440px" });
       yesNoDialogRef.afterClosed().subscribe(result => {
         if (result) {

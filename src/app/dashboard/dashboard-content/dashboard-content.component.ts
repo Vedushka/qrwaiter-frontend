@@ -42,25 +42,25 @@ export class DashboardContentComponent {
   }
   qrUrlWaiter = environment.baseUrl+"/qr/waiter/";
   printQrWaiters(){
-    this.router.navigate(["/dashboard/qr-print"], {queryParams: {link: this.qrUrlWaiter, title: "QR-код для официантов"}})
+    this.router.navigate(["/dashboard/qr-print"], {queryParams: {link: this.qrUrlWaiter, title: "QR code for waiters"}})
   }
   copyLink(link: string){
     this.clipboard.copy(link);
-    this.snackBar.open("Ссылка скопирована", "", { duration: 2000 })
+    this.snackBar.open("Link copied", "", { duration: 2000 })
   }
   onGenerate() {
-    let yesNoContent: YesNoDialogContent = { header: `Новый QR-код для официантов`, description: `Вы действительно хотите сгенерировать новый QR-код для ресторана? Текущий QR-код будет не допоступен.` }
+    let yesNoContent: YesNoDialogContent = { header: `New QR-code for waiters`, description: `Are you sure you want to generate a new QR code for the restaurant? The current QR code will not be available.` }
     let yesNoDialogRef = this.dialog.open(YesNoDialogComponent, { data: yesNoContent, id: "yesNoDeleteTabledDialog", ariaModal: true });
     yesNoDialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.restaurantService.generateNewRestaurantLink(this.restaurant.id).subscribe(response => {
 
           this.restaurant = response;
-          this.snackBar.open("Новый QR-код сгенерирован", "", { duration: 2000 })
+          this.snackBar.open("New QR-code generated", "", { duration: 2000 })
           this.qrUrlWaiter = environment.baseUrl+"/qr/waiter/"+this.restaurant.waiterLink;
         },
             error=>{
-          this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 })
+          this.snackBar.open("Error, try again", "", { duration: 2000 })
         });
       }
     });

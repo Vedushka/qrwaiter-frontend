@@ -55,7 +55,7 @@ export class LoginComponent {
         this.router.navigate(['/dashboard'])
       },
       error: async (e: any) => {
-        this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 }).afterDismissed().subscribe(() => {
+        this.snackBar.open("Error, try again", "", { duration: 2000 }).afterDismissed().subscribe(() => {
           this.loading = false
         })
       }

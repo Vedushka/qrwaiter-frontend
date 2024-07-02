@@ -65,18 +65,18 @@ export class EditQrCodeComponent {
         this.form.get("title")?.setValue(response.title);
         this.qrCode = response;
         this.loading = false;
-        this.snackBar.open("QR-код изменен", "", { duration: 2000 })
+        this.snackBar.open("QR-code changed", "", { duration: 2000 })
 
       },
       error=>{
       this.loading = false;
-      this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 })
+      this.snackBar.open("Error, try again", "", { duration: 2000 })
     });
   }
   onGenerate(linkType: LinkType) {
-    let yesNoContent: YesNoDialogContent = { header: `Новый QR-код для клиентов`, description: `Вы действительно хотите сгенерировать новый QR-код для этого столика? Текущий QR-код будет не допоступен. Вам придется клеить новый QR-код на столик. Для генерации нового QR-кода введите: </br><b>${this.data.name} ${this.data.number}</b>`, keyString : `${this.data.name} ${this.data.number}` }
+    let yesNoContent: YesNoDialogContent = { header: `New QR code for customers`, description: `Are you sure you want to generate a new QR code for this table? The current QR code will not be available. You will have to stick a new QR code on the table. To generate a new QR code, enter: </br><b>${this.data.name} ${this.data.number}</b>`, keyString : `${this.data.name} ${this.data.number}` }
     if(linkType == LinkType.WaiterLink){
-      yesNoContent = { header: `Новый QR-код для официантов`, description: `Вы действительно хотите сгенерировать новый QR-код для этого столика? Текущий QR-код будет не допоступен.` }
+      yesNoContent = { header: `New QR code for waiters`, description: `Are you sure you want to generate a new QR code for this table? The current QR code will not be available.` }
     }
     let yesNoDialogRef = this.dialog.open(YesNoDialogComponent, { data: yesNoContent, id: "yesNoDeleteTabledDialog", ariaModal: true, width: "440px" });
     yesNoDialogRef.afterClosed().subscribe(result => {
@@ -85,14 +85,14 @@ export class EditQrCodeComponent {
         this.qrCodeService.generateNewQrCodeLink(this.qrCode.id, linkType).subscribe(response => {
           this.form.get("title")?.setValue(response.title);
           this.qrCode = response;
-          this.snackBar.open("Новый QR-код сгенерирован", "", { duration: 2000 })
+          this.snackBar.open("New QR-code generated", "", { duration: 2000 })
           this.qrUrlCall = environment.baseUrl+"/qr/call/" + this.qrCode.clientLink;
           this.qrUrlSubscribe = environment.baseUrl+"/qr/subscribe/" + this.qrCode.waiterLink;
           this.loading = false;
         },
         error=>{
           this.loading = false;
-          this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 })
+          this.snackBar.open("Error, try again", "", { duration: 2000 })
         });
       }
     });
@@ -107,6 +107,6 @@ export class EditQrCodeComponent {
   }
   copyLink(link: string){
     this.clipboard.copy(link);
-    this.snackBar.open("Ссылка скопирована", "", { duration: 2000 })
+    this.snackBar.open("Link copied", "", { duration: 2000 })
   }
 }

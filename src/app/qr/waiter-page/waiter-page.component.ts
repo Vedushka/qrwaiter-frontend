@@ -81,7 +81,7 @@ export class WaiterPageComponent {
 
   allNotificationsOff() {
       this.notificationService.unsubscribeDeviceFromAllQrCodes(this.token).subscribe(() => {
-        this.snackBar.open("Уедомления отключены", undefined, {duration: 2000});
+        this.snackBar.open("Notifications turnded-off", undefined, {duration: 2000});
         this.tables$.subscribe(tables => {
           this.tables = tables;
         });

@@ -1,14 +1,14 @@
 <section>
 
   <h1>{{ restaurant.name }}</h1>
-  <p>Официальноее название/ИНН: {{ restaurant.companyName }}</p>
-  <p>Описание: {{ restaurant.description }}</p>
-  <p>Адрес: {{ restaurant.address.street }} {{ restaurant.address.buildingNumber }}, {{ restaurant.address.city }}
+  <p>Company ncame: {{ restaurant.companyName }}</p>
+  <p>Description: {{ restaurant.description }}</p>
+  <p>Address: {{ restaurant.address.street }} {{ restaurant.address.buildingNumber }}, {{ restaurant.address.city }}
     , {{ restaurant.address.zipCode }}</p>
-  <p>Временная зона: {{ timeZone }}</p>
+  <p>Time zone: {{ timeZone }}</p>
 
 
-  <h3>QR-код ресторана для официантов</h3>
+  <h3>QR-code of resaurant for waiters</h3>
   <section class="qr">
     <qrcode [qrdata]="qrUrlWaiter" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
   </section>
@@ -16,19 +16,19 @@
   <section class="buttons">
 
     <button mat-stroked-button (click)="copyLink(qrUrlWaiter)">
-      <mat-icon aria-label="Копировать" fontIcon="content_copy"></mat-icon>
-      Скопировать ссылку
+      <mat-icon aria-label="Copy" fontIcon="content_copy"></mat-icon>
+      Copy link
     </button>
-    <button mat-stroked-button (click)="onGenerate()">Новый QR-код</button>
+    <button mat-stroked-button (click)="onGenerate()">New QR-code</button>
     <button mat-stroked-button (click)="printQrWaiters()">
       <mat-icon>print</mat-icon>
-      Напечатать QR-код
+      Print QR-code
     </button>
   </section>
 
   <button mat-stroked-button routerLink="/dashboard/profile">
     <mat-icon>edit</mat-icon>
-    Изменить детали компании
+    Edit company
   </button>
 
 </section>

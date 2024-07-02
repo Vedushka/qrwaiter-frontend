@@ -33,7 +33,7 @@ export class AddTableComponent {
   table!: AddTableDTO;
   loading = false;
   form = new FormGroup({
-    name: new FormControl('Столик', [Validators.required]),
+    name: new FormControl('Table', [Validators.required]),
     number: new FormControl<number>(this.data, [Validators.required]),
   });
   onSubmit() {

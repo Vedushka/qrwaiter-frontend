@@ -1,43 +1,43 @@
 <mat-dialog-content class="mat-typography">
-    <h2>Редактировать QR-код</h2>
+    <h2>Edit QR-code</h2>
 
     <form class="form" [formGroup]="form" (ngSubmit)="onUpdate()">
         <mat-form-field class="input">
-            <mat-label>Текст QR-кода</mat-label>
+            <mat-label>Text of QR-code</mat-label>
             <textarea  type="text" matInput formControlName="title" placeholder=""></textarea>
         </mat-form-field>
     </form>
-    <h3>QR-код для посетителей</h3>
+    <h3>QR-code for clients</h3>
     <section class="qr">
         <qrcode [qrdata]="qrUrlCall" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'"></qrcode>
     </section>
     <section class="qr-menu">
         <a class="link" [href]="qrUrlCall">{{qrUrlCall}}</a>
-        <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlCall)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
+        <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlCall)" aria-label="Copy" fontIcon="content_copy"></mat-icon>
     </section>
     <section class="qr-menu">
-      <button mat-button (click)="onGenerate(linkType.ClientLink)">Новый QR-код</button>
-      <button mat-button mat-dialog-close (click)="printQrClien()">Печать</button>
+      <button mat-button (click)="onGenerate(linkType.ClientLink)">New QR-code</button>
+      <button mat-button mat-dialog-close (click)="printQrClien()">Print</button>
     </section>
 
-    <h3>QR-код для официантов</h3>
+    <h3>QR-code for waiters</h3>
     <section class="qr">
         <qrcode class="qr" [qrdata]="qrUrlSubscribe" [width]="256" [errorCorrectionLevel]="'H'" [elementType]="'svg'">
         </qrcode>
     </section>
     <section class="qr-menu">
         <a class="link" [href]="qrUrlSubscribe">{{qrUrlSubscribe}}</a>
-        <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlSubscribe)" aria-label="Копировать" fontIcon="content_copy"></mat-icon>
+        <mat-icon class="icon" size="15" aria-hidden="false" (click)="copyLink(qrUrlSubscribe)" aria-label="Copy" fontIcon="content_copy"></mat-icon>
     </section>
     <section class="qr-menu">
-        <button mat-button (click)="onGenerate(linkType.WaiterLink)">Новый QR-код</button>
-      <button mat-button  mat-dialog-close (click)="printQrWaiter()">Печать</button>
+        <button mat-button (click)="onGenerate(linkType.WaiterLink)">New QR-code</button>
+      <button mat-button  mat-dialog-close (click)="printQrWaiter()">Print</button>
     </section>
 
 </mat-dialog-content>
 <mat-dialog-actions align="start">
 
-    <button mat-button cdkFocusInitial mat-dialog-close>Отмена</button>
-    <button mat-button type="submit" (click)="onUpdate()">Обновить</button>
+    <button mat-button cdkFocusInitial mat-dialog-close>Cancel</button>
+    <button mat-button type="submit" (click)="onUpdate()">Update</button>
 </mat-dialog-actions>
 <mat-progress-bar [class.invisible]="!loading" mode="indeterminate"></mat-progress-bar>

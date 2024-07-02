@@ -86,7 +86,7 @@ export class RegistrationComponent {
             this.router.navigate(['/dashboard/profile'])
           },
           error: (e) =>{
-            this.snackBar.open(`Ваш аккаунт создан но что-то пошло не так, попробуйте войти через страничку входа используя вашу почту ${request.email}`, "Войти").onAction().subscribe(()=>{
+            this.snackBar.open(`Your account has been created but something went wrong, try to log in through the login page using your email ${request.email}`, "Login").onAction().subscribe(()=>{
               this.router.navigate(['identity/login'])
             })
           }
@@ -95,11 +95,11 @@ export class RegistrationComponent {
       },
       error: (e : HttpErrorResponse) => {
         if (e.error.errors != undefined && e.error.errors['DuplicateUserName'] != undefined)
-          this.snackBar.open(`Данная почта уже используется`, "", { duration: 3000 }).afterDismissed().subscribe(()=>{
+          this.snackBar.open(`This email is already in use`, "", { duration: 3000 }).afterDismissed().subscribe(()=>{
             this.loading = false
             })
         else
-          this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 }).afterDismissed().subscribe(()=>{
+          this.snackBar.open("Error, try again", "", { duration: 2000 }).afterDismissed().subscribe(()=>{
         this.loading = false
         })
       },

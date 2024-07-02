@@ -1,5 +1,5 @@
 <section>
-  <h1 class="middle">Регистрация</h1>
+  <h1 class="middle">Registration</h1>
   <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="input">
       <mat-label>Email</mat-label>
@@ -7,36 +7,36 @@
         placeholder="example@example.com" />
       @if (form.get('emailFormControl')?.hasError('email') &&
       !form.get('emailFormControl')?.hasError('required')) {
-      <mat-error>Пожалуйста введите правильный email адресс</mat-error>
+      <mat-error>Pleas enter correct email</mat-error>
       } @if (form.get('emailFormControl')?.hasError('required')) {
-      <mat-error>Введите email адресс</mat-error>
+      <mat-error>Please enter email</mat-error>
       }
     </mat-form-field>
     <mat-form-field class="input">
-      <mat-label>Пароль</mat-label>
+      <mat-label>Password</mat-label>
       <input type="password" matInput formControlName="passwordFormControl" />
       @if (form.get('passwordFormControl')?.hasError('required')) {
-      <mat-error>Введите пароль</mat-error>
+      <mat-error>Please enter password</mat-error>
       } @if(form.get('passwordFormControl')?.hasError('pattern')){
-      <mat-error>Пароль должен содержать минимум 8 символов, 1 заглавную букву, 1
-        строчную букву, 1 цифру, 1 спецсимвол</mat-error>
+      <mat-error>Password has to include minimum 8 symbols, 1 capital letter, 1
+        lowercase letter, 1 number, 1 special symbol</mat-error>
       }
     </mat-form-field>
     <mat-form-field class="input">
-      <mat-label>Повторите пароль</mat-label>
+      <mat-label>Repeat password</mat-label>
       <input type="password" matInput formControlName="confirmPasswordFormControl" />
       @if(form.get('confirmPasswordFormControl')?.hasError('notSame')){
-      <mat-error>Пароли не совпадают</mat-error>
+      <mat-error>Password not same</mat-error>
       }
     </mat-form-field>
   </form>
 
   <section class="buttons">
     <button mat-raised-button color="primary" type="submit" (click)="onSubmit()" [disabled]="!form.valid || loading">
-      Регистрация
+      Register
     </button>
     <button mat-button (click)="routeToLogin()" color="primary">
-      На страничку входа
+      Login page
     </button>
   </section>
 

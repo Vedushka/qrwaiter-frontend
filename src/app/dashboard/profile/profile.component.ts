@@ -80,12 +80,12 @@ onSubmit() {
     this.restaurantService.updateRestaurant(this.restaurant).subscribe({
       next: (response) => {
         
-      this.snackBar.open("Данные успешно обновлены", "", { duration: 2000 }).afterDismissed().subscribe(() => {
+      this.snackBar.open("Updated", "", { duration: 2000 }).afterDismissed().subscribe(() => {
         this.loading = false;
       });
       },
     error: (e) => {
-      this.snackBar.open("Ошибка, попробуйте еще раз", "", { duration: 2000 }).afterDismissed().subscribe(() => {
+      this.snackBar.open("Error, try again", "", { duration: 2000 }).afterDismissed().subscribe(() => {
         this.loading = false;
       })
     }
@@ -95,41 +95,41 @@ onSubmit() {
 }
 
 export const TimeZones = [
-  { "value": -12 * 60, "description": "-12 Международная линия перемены даты" },
-  { "value": -11 * 60, "description": "-11 Координированное время" },
-  { "value": -10 * 60, "description": "-10 Гавайско-Алеутское время" },
-  { "value": -9 * 60, "description": "-9 Аляскинское время" },
-  { "value": -8 * 60, "description": "-8 Тихоокеанское время" },
-  { "value": -7 * 60, "description": "-7 Горное время" },
-  { "value": -6 * 60, "description": "-6 Центральное время" },
-  { "value": -5 * 60, "description": "-5 Восточное время" },
-  { "value": -4 * 60 - 30, "description": "-4:30 Время полуострова Ньюфаундленд" },
-  { "value": -4 * 60, "description": "-4 Атлантическое время" },
-  { "value": -3 * 60 - 30, "description": "-3:30 Ньюфаундлендское время" },
-  { "value": -3 * 60, "description": "-3 Аргентинское время" },
-  { "value": -2 * 60, "description": "-2 Координированное время" },
-  { "value": -1 * 60, "description": "-1 Азорское время" },
-  { "value": 0, "description": "0 Западноевропейское время" },
-  { "value": 1 * 60, "description": "+1 Центральноевропейское время" },
-  { "value": 2 * 60, "description": "+2 Восточноевропейское время" },
-  { "value": 3 * 60, "description": "+3 Московское время" },
-  { "value": 3 * 60 + 30, "description": "+3:30 Иранское время" },
-  { "value": 4 * 60, "description": "+4 Самарское время" },
-  { "value": 4 * 60 + 30, "description": "+4:30 Афганское время" },
-  { "value": 5 * 60, "description": "+5 Екатеринбургское время" },
-  { "value": 5 * 60 + 30, "description": "+5:30 Индийское время" },
-  { "value": 5 * 60 + 45, "description": "+5:45 Непальское время" },
-  { "value": 6 * 60, "description": "+6 Омское время" },
-  { "value": 6 * 60 + 30, "description": "+6:30 Мьянманское время" },
-  { "value": 7 * 60, "description": "+7 Красноярское время" },
-  { "value": 8 * 60, "description": "+8 Иркутское время" },
-  { "value": 8 * 60 + 45, "description": "+8:45 Западноавстралийское время" },
-  { "value": 9 * 60, "description": "+9 Якутское время" },
-  { "value": 9 * 60 + 30, "description": "+9:30 Центральноавстралийское время" },
-  { "value": 10 * 60, "description": "+10 Владивостокское время" },
-  { "value": 10 * 60 + 30, "description": "+10:30 Лорд-Хау-Айлендское время" },
-  { "value": 11 * 60, "description": "+11 Среднеколымское время" },
-  { "value": 12 * 60, "description": "+12 Камчатское время" },
-  { "value": 12 * 60 + 45, "description": "+12:45 Чатемское время" },
-  { "value": 13 * 60, "description": "+13 Линия перемены даты" }
+  { "value": -12 * 60, "description": "-12 International Date Line" },
+  { "value": -11 * 60, "description": "-11 Coordinated Time" },
+  { "value": -10 * 60, "description": "-10 Hawaii-Aleutian Standard Time (HAST)" },
+  { "value": -9 * 60, "description": "-9 Alaska Standard Time (AKST)" },
+  { "value": -8 * 60, "description": "-8 Pacific Standard Time (PST)" },
+  { "value": -7 * 60, "description": "-7 Mountain Standard Time (MST)" },
+  { "value": -6 * 60, "description": "-6 Central Standard Time (CST)" },
+  { "value": -5 * 60, "description": "-5 Eastern Standard Time (EST)" },
+  { "value": -4 * 60 - 30, "description": "-4:30 Newfoundland Standard Time (NST)" },
+  { "value": -4 * 60, "description": "-4 Atlantic Standard Time (AST)" },
+  { "value": -3 * 60 - 30, "description": "-3:30 Newfoundland Daylight Time (NDT)" },
+  { "value": -3 * 60, "description": "-3 Argentina Time (ART)" },
+  { "value": -2 * 60, "description": "-2 Coordinated Universal Time (UTC-2)" },
+  { "value": -1 * 60, "description": "-1 Azores Standard Time (AZOT)" },
+  { "value": 0, "description": "0 Greenwich Mean Time (GMT)" },
+  { "value": 1 * 60, "description": "+1 Central European Time (CET)" },
+  { "value": 2 * 60, "description": "+2 Eastern European Time (EET)" },
+  { "value": 3 * 60, "description": "+3 Moscow Standard Time (MSK)" },
+  { "value": 3 * 60 + 30, "description": "+3:30 Iran Standard Time (IRST)" },
+  { "value": 4 * 60, "description": "+4 Samara Time (SAMT)" },
+  { "value": 4 * 60 + 30, "description": "+4:30 Afghanistan Time (AFT)" },
+  { "value": 5 * 60, "description": "+5 Yekaterinburg Time (YEKT)" },
+  { "value": 5 * 60 + 30, "description": "+5:30 Indian Standard Time (IST)" },
+  { "value": 5 * 60 + 45, "description": "+5:45 Nepal Time (NPT)" },
+  { "value": 6 * 60, "description": "+6 Omsk Time (OMST)" },
+  { "value": 6 * 60 + 30, "description": "+6:30 Myanmar Time (MMT)" },
+  { "value": 7 * 60, "description": "+7 Krasnoyarsk Time (KRAT)" },
+  { "value": 8 * 60, "description": "+8 Irkutsk Time (IRKT)" },
+  { "value": 8 * 60 + 45, "description": "+8:45 Australian Central Western Standard Time (ACWST)" },
+  { "value": 9 * 60, "description": "+9 Yakutsk Time (YAKT)" },
+  { "value": 9 * 60 + 30, "description": "+9:30 Australian Central Standard Time (ACST)" },
+  { "value": 10 * 60, "description": "+10 Vladivostok Time (VLAT)" },
+  { "value": 10 * 60 + 30, "description": "+10:30 Lord Howe Standard Time (LHST)" },
+  { "value": 11 * 60, "description": "+11 Srednekolymsk Time (SRET)" },
+  { "value": 12 * 60, "description": "+12 Kamchatka Time (PETT)" },
+  { "value": 12 * 60 + 45, "description": "+12:45 Chatham Islands Time (CHAST)" },
+  { "value": 13 * 60, "description": "+13 Tonga Time (TOT)" }
 ];

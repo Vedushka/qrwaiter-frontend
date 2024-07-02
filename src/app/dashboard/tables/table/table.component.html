@@ -4,12 +4,12 @@
     <mat-card-title class="title">{{table.name}}</mat-card-title>
     }
     @else{
-    <mat-card-title class="title">Столик</mat-card-title>
+    <mat-card-title class="title">Table</mat-card-title>
     }
-    <mat-card-subtitle class="subtitle">Номер столика: {{table.number}}</mat-card-subtitle>
+    <mat-card-subtitle class="subtitle">Number of table: {{table.number}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-button (click)="openDialogEdit()">Редактировать</button>
-    <button mat-button (click)="openDialogQrCodeEdit()">QR-код</button>
+    <button mat-button (click)="openDialogEdit()">Edit</button>
+    <button mat-button (click)="openDialogQrCodeEdit()">QR-code</button>
   </mat-card-actions>
 </mat-card>

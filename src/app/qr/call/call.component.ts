@@ -29,7 +29,7 @@ export class CallComponent {
   callWaiter(){
     this.id$.subscribe(id =>{
       this.notificationService.callWaiter(id).subscribe(()=>{
-        this.snackBar.open("Официант вызван", undefined,{duration: 2000})
+        this.snackBar.open("Water called", undefined,{duration: 2000})
       })
     })
   }

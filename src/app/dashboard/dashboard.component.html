@@ -18,11 +18,11 @@
     <mat-list class="links">
       <mat-list-item><a routerLink="/dashboard" class="sidenav-text">
         <mat-icon>store</mat-icon>
-        О компании</a></mat-list-item>
+        About company</a></mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item><a routerLink="/dashboard/tables" class="sidenav-text">
         <mat-icon>table_restaurant</mat-icon>
-        Столики</a></mat-list-item>
+        Tables</a></mat-list-item>
       <mat-divider></mat-divider>
 
     </mat-list>
@@ -31,7 +31,7 @@
         <section class="section">
           <mat-form-field class=""  (change)="qrChangeValue($event)">
             <section>
-              <mat-label>Размер QR</mat-label>
+              <mat-label>Size QR</mat-label>
               <input matInput type="number" [(ngModel)]="qrSize" >
             </section>
             <mat-slider class="" [max]="400" [min]="50" [step]="1">
@@ -43,7 +43,7 @@
           <section class="section">
             <mat-form-field class=""  (change)="qrChangeValue($event)">
               <section>
-                <mat-label>Размер текста</mat-label>
+                <mat-label>Text size</mat-label>
                 <input matInput type="number" [(ngModel)]="qrFontSize">
               </section>
               <mat-slider class="" [max]="72" [min]="4" [step]="1">
@@ -55,7 +55,7 @@
         <section class="section">
           <mat-form-field class=""  (change)="qrChangeValue($event)">
             <section>
-              <mat-label>Закругление углов</mat-label>
+              <mat-label>Border radius</mat-label>
               <input matInput type="number" [(ngModel)]="qrBorderRadius" >
             </section>
             <mat-slider class="" [max]="8" [min]="0" [step]="1">
@@ -65,7 +65,7 @@
         </section>
 
 
-          <button mat-flat-button color="primary" (click)="print()"><mat-icon>print</mat-icon>Печать</button>
+          <button mat-flat-button color="primary" (click)="print()"><mat-icon>print</mat-icon>Print</button>
       </section>
     }
     </section>

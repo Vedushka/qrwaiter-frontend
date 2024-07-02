@@ -1,26 +1,26 @@
 @if (this.form.get('name')?.getRawValue() && token) {
-  <h3>Добро пожаловать {{ this.form.get('name')?.getRawValue() }}</h3>
+  <h3>Welcome {{ this.form.get('name')?.getRawValue() }}</h3>
 
   <button  mat-flat-button color="warn"  (click)="allNotificationsOff()">
     <mat-icon>notifications_off</mat-icon>
-    Выключить все уведомления на этом устройстве
+    Turn off notifications on this device
   </button>
 }
 @if (!token) {
-  <h4>Включите уведомления</h4>
-  <p>Для работы приложения необходимо влючить уведомления</p>
+  <h4>Turn on notifications</h4>
+  <p>For the application to work, notifications must be enabled</p>
 
 
     <form class="form" [formGroup]="form" (ngSubmit)="requestToken()">
       <mat-form-field class="full-width input">
-        <mat-label>Имя официанта или название устройства</mat-label>
-        <input formControlName="name" matInput placeholder="Петр Иванов/Терминал" required>
+        <mat-label>Name of waiter or device name</mat-label>
+        <input formControlName="name" matInput placeholder="John Smith/Terminal" required>
 
       </mat-form-field>
     </form>
       <button [disabled]="form.get('name')?.hasError('required')" mat-flat-button color="accent" type="submit" (click)="requestToken()">
         <mat-icon>notifications</mat-icon>
-        Включить уведомления на этом устройстве
+        Turn on notifications on this device
       </button>
 
 

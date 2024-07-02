@@ -1,65 +1,65 @@
 <section>
-    <h2 class="middle">Детали компании</h2>
+    <h2 class="middle">Companies details</h2>
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
             <mat-form-field class="input">
-                <mat-label>Название заведения</mat-label>
+                <mat-label>Resaurant name</mat-label>
                 <input type="text" matInput formControlName="name" placeholder="">
                 @if (form.get('name')?.hasError('required')) {
-                <mat-error>Поле обязательно</mat-error>
+                <mat-error>Required</mat-error>
                 }
             </mat-form-field>
 
             <mat-form-field class="input">
-                <mat-label>Официальное название или ИНН</mat-label>
+                <mat-label>Company name</mat-label>
                 <input type="text" matInput formControlName="companyName" placeholder="">
                 @if (form.get('companyName')?.hasError('required')) {
-                <mat-error>Поле обязательно</mat-error>
+                <mat-error>Required</mat-error>
                 }
             </mat-form-field>
 
             <mat-form-field class="input">
-                <mat-label>Описание</mat-label>
+                <mat-label>Description</mat-label>
                 <input type="text" matInput formControlName="description" placeholder="">
             </mat-form-field>
 
 
 
             <mat-form-field class="input">
-                <mat-label>Город</mat-label>
+                <mat-label>City</mat-label>
                 <input type="text" matInput formControlName="city" placeholder="">
                 @if (form.get('city')?.hasError('required')) {
-                <mat-error>Поле обязательно</mat-error>
+                <mat-error>Required</mat-error>
                 }
             </mat-form-field>
 
 
             
             <mat-form-field class="input">
-                <mat-label>Почтовый индекс</mat-label>
+                <mat-label>ZIP code</mat-label>
                 <input type="text" matInput formControlName="zipCode" placeholder="">
                 @if (form.get('zipCode')?.hasError('required')) {
-                <mat-error>Поле обязательно</mat-error>
+                <mat-error>Required</mat-error>
                 }
             </mat-form-field>
             <mat-form-field class="input">
-                <mat-label>Название улицы</mat-label>
+                <mat-label>Street name</mat-label>
                 <input type="text" matInput formControlName="street" placeholder="">
                 @if (form.get('street')?.hasError('required')) {
-                <mat-error>Поле обязательно</mat-error>
+                <mat-error>Required</mat-error>
                 }
             </mat-form-field>
 
             <mat-form-field class="input">
-                <mat-label>Номер дома</mat-label>
+                <mat-label>Building number</mat-label>
                 <input type="text" matInput formControlName="buildingNumber" placeholder="">
                 @if (form.get('buildingNumber')?.hasError('required')) {
-                <mat-error>Поле обязательно</mat-error>
+                <mat-error>Required</mat-error>
                 }
             </mat-form-field>
 
             <mat-form-field class="select-dropdown">
-                <mat-label>Временная зона</mat-label>
+                <mat-label>Time zone</mat-label>
                 <mat-select formControlName="timeZone" name="timeZone" >
                     @for (timeZone of timeZones; track timeZone) {
                     <mat-option [value]="timeZone.value">{{timeZone.description}}</mat-option>
@@ -67,11 +67,12 @@
                 </mat-select>
             </mat-form-field>
             
-            <mat-checkbox class="" formControlName="notifyNe" >Уведомлять этот компьютер обо всех вызовах</mat-checkbox>
+            <!-- to do --> 
+            <!-- <mat-checkbox class="" formControlName="notifyNe" >Notify this device about all calls</mat-checkbox> -->
 
             <section class="buttons">
                 <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
-                [disabled]="!form.valid || loading">Сохранить</button>
+                [disabled]="!form.valid || loading">Save</button>
             </section>
     </form>
 </section>

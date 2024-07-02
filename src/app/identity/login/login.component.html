@@ -1,5 +1,5 @@
 <section>
-    <h1 class="middle">Вход</h1>
+    <h1 class="middle">Login</h1>
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field class="input">
             <mat-label>Email</mat-label>
@@ -7,25 +7,25 @@
                 placeholder="example@example.com">
             @if (form.get('emailFormControl')?.hasError('email') && !form.get('emailFormControl')?.hasError('required'))
             {
-            <mat-error>Пожалуйста введите правильный email адресс</mat-error>
+            <mat-error>Please enter correct email</mat-error>
             }
             @if (form.get('emailFormControl')?.hasError('required')) {
-            <mat-error>Введите email адресс</mat-error>
+            <mat-error>Please enter email</mat-error>
             }
         </mat-form-field>
         <mat-form-field class="input">
-            <mat-label>Пароль</mat-label>
+            <mat-label>Password</mat-label>
             <input type="password" matInput formControlName="passwordFormControl">
             @if (form.get('passwordFormControl')?.hasError('required')) {
-            <mat-error>Введите пароль</mat-error>
+            <mat-error>Please enter password</mat-error>
             }
         </mat-form-field>
 
     </form>
     <section class="buttons">
         <button mat-raised-button color="primary" type="submit" (click)="onSubmit()"
-            [disabled]="!form.valid || loading">Войти</button>
-        <button mat-button (click)="routeToRegistration()" color="primary">Регистрация</button>
+            [disabled]="!form.valid || loading">Login</button>
+        <button mat-button (click)="routeToRegistration()" color="primary">Registration</button>
     </section>
 
 </section>
