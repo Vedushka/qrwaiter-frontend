@@ -13,3 +13,6 @@ Register as restaurant, create tables, print qr-codes for tables, subscribe to t
 
 Run `npm run start-local` or `ng serve --ssl --ssl-key localhost-key.pem --ssl-cert localhost.pem` for a dev server. Navigate to `https://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## Linked project
+
+[qrwaiter-backend](https://github.com/Vedushka/qrwaiter-backend)
